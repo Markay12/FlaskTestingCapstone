@@ -1,6 +1,6 @@
 # Capstone Flask Implementation
 
-![Flask Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffiles.realpython.com%2Fmedia%2Fflask.3aee85149243.png&f=1&nofb=1&ipt=a2c9be62d1114662cbe9d257c370cf7228e25b946d9f437f7cabf8c58afccdd5&ipo=images)
+<img align="right" src="https://miro.medium.com/max/1400/1*e2v4HCTyZo8bQqDU7iZqMw.webp" alt="drawing" style="margin-right: 20px" width="250"/>
 
 ## Initial Flask Setup and Trial
 
