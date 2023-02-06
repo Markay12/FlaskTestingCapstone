@@ -1,6 +1,7 @@
-# Capstone Flask Implementation
-
 <img align="right" src="https://miro.medium.com/max/1400/1*e2v4HCTyZo8bQqDU7iZqMw.webp" alt="drawing" style="margin-right: 20px" width="250"/>
+
+
+# Capstone Flask Implementation
 
 ## Initial Flask Setup and Trial
 
