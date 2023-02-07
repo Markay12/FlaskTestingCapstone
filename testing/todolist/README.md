@@ -1,4 +1,21 @@
 # To Do List Application
+---
+
+## Table of Contents
+
+1. [Design the Database](https://github.com/Markay12/FlaskTestingCapstone/tree/master/testing/todolist#designing-the-database)
+
+2. [Code Structure](https://github.com/Markay12/FlaskTestingCapstone/tree/master/testing/todolist#code-structure)
+
+3. [Code](https://github.com/Markay12/FlaskTestingCapstone/tree/master/testing/todolist#the-code)
+	1. [Tables](https://github.com/Markay12/FlaskTestingCapstone/tree/master/testing/todolist#tables)
+	2. [Service.py](https://github.com/Markay12/FlaskTestingCapstone/tree/master/testing/todolist#servicepy)
+
+4. [Running the ToDoList Application](https://github.com/Markay12/FlaskTestingCapstone/tree/master/testing/todolist#running-the-todolist-flask-application)
+
+---
+
+
 
 Now that we have a solid understanding on how to use Flask we can begin creating an application for users. 
 
