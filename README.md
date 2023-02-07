@@ -3,6 +3,8 @@
 
 # Capstone Flask Implementation
 
+![Flask Shield](https://img.shields.io/badge/Flask-1.1.x-blue)
+
 ## Initial Flask Setup and Trial
 
 To get started with Flask you need to make sure that you have Python installed. Python is a good language for the web application domain.
