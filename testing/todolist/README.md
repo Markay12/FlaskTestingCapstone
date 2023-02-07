@@ -58,4 +58,98 @@ The code for this application will be broken into three different sections. Ther
 ## The Code
 
 
+The main thing we are new to using with this code is SQLite. Using sqlite allows us to track the information that is being used and create our todo database.
 
+```Python
+# 1.import sqlite
+import sqlite
+
+# 2. create a connection to DB     
+conn = sqlite3.connect('todo.db')
+
+# 3. Write your sql query   
+query = "<SQLite Query goes here>"
+
+# 4. execute the query
+result = conn.execute(query)
+```
+
+This code snippet for sqlite is going to be used frequently in the `models.py` file. 
+
+
+## Tables
+
+Tables are created for the main way we interact with the database. The models.py file is what communicates most with the database. 
+
+The first thing we create is a schema which is where the DB tables are created and maintained. 
+
+This schema is represented as an object where we create the to do table as well as the user because each user is going to have their own to do table.
+
+In this to do model, we will also need to create methods to create, select, delete and update the todo list. Below is the code to create the todo list and it will be up to you to try and code your own code for the update, delete and select methods.
+
+```Python
+
+class ToDoModel:
+    TABLENAME = "TODO"
+
+    def __init__(self):
+        self.conn = sqlite3.connect('todo.db')
+
+    def create(self, text, description):
+        query = f'insert into {self.TABLENAME} ' \
+                f'(Title, Description) ' \
+                f'values ("{text}","{description}")'
+        
+        result = self.conn.execute(query)        
+
+```
+
+### Service.py
+
+The service.py file contains methods from service because it enables you to test the functions of our to do list.
+
+### View Functions
+The functions to view will be the entry point and exit point of the system. 
+
+There are four main decisions that can be made.
+
+1. Type of input that is expected.
+2. Type of output to give the user.
+3. Authentication of Requests.
+4. Logging the requests.
+
+This is all done in the `app.py` file
+
+```Python
+
+@app.route("/todo", methods=["POST"])
+def create_todo():
+    return ToDoService().create(request.get_json())
+```
+
+Now that all of this is done, you should have your code written and ready to go. We can move onto the final part of running your project.
+
+# Running the ToDoList Flask Application
+
+1. Run app.py in the console. It should be running using the port that was defined. In my case, I have set the port to 8888. 
+
+`127.0.0.1:8888`
+
+2. To create your first request we need to make sure that requests are downloaded on to your machine. To do this we are going to use pip install.
+
+`pip3 install requests`
+
+You can also use postman to do your request testing. The first will use your command line while postman is used or downloaded online.
+
+3. When using requests instead of Postman. You will have to open the python API and create your first request. From here you will then be able to see your output online by adding the `/todo` extension to your link.
+
+```Shell
+$ python
+
+>>> import requests
+>>> requests.post("http://localhost:8888/todo",
+			json={"Title":"This is Mark's ToDoList",
+				"Description":"Look at all these things!"})
+```
+
+Getting a repsonse of [200] means that your request was successfully completed! Congratulations! Head over to your `/todo/` page of your localhost at the correct port to see the requests. 	
