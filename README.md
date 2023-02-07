@@ -1,54 +1,185 @@
-# FlaskInit
-First Flask Project and Deployment
+<img align="right" src="https://miro.medium.com/max/1400/1*e2v4HCTyZo8bQqDU7iZqMw.webp" alt="drawing" style="margin-right: 20px" width="250"/>
 
 
-## **Table of Contents**
-1. [Flask?](https://github.com/Markay12/FlaskInit#flask)
-2. [Objective](https://github.com/Markay12/FlaskInit#objective)
-3. [Versions](https://github.com/Markay12/FlaskInit#versions)
-4. [About Me](https://github.com/Markay12/FlaskInit#about-me)
+# Capstone Flask Implementation
 
-## *Flask*
-What is Flask?
-- Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions
+## Initial Flask Setup and Trial
 
-## *Objective*
-Learn how to use flask and implement personal code into a new front-end environment
+To get started with Flask you need to make sure that you have Python installed. Python is a good language for the web application domain.
+Python is now used a lot in backend development and has even gotten new installations to work with JavaScript in web development. (Take a look into PyScript).
 
-# *Versions*
+[PyScript](https://pyscript.net/)
 
-## Version 0.0.1
----
-- Init page with about route 
+## Requirements 
 
-### Version 0.0.2
----
-- Added basic addition of blog posts and tracking of posts
+1. Python 3.7 or greater.
+2. A workable IDE that allows for efficient editing of code.
+3. Create a project directory.
+4. Virtual environment (venv).
+5. Install flask with pip.
 
-### Version 0.0.3
----
-- Added jinja syntax and inheritance between html files
-- created layout.html template, parent template for inheritance in each html code(uses {% block content %})
+## First Project
 
-### Version 0.0.4
----
-- Update to UI showing the initial setup of the website. Shows first blog posts and adds some navigation between panes
-- Updated titles for the webpages and further title information
-- Inherit formatting between html files
+To begin with the first project we make our own directory called testing and add a file.
+Our file name is going to be firstApp.py. Below will be the code and setup to get your first app running.
 
-## Version 0.1.0
----
-- forms have been updated to take in information from users and store in a database for certain login information
-- applied new forms into html files for webpages that display the login and registration forms for each user
-- buttons and text-fields included with validation, username must be between 2 to 20 characters long as well as email validation
-- checks and confirms passwords match
-1. Login verification
+1. Create your new directory and create the new file named firstApp.py.
 
-## Version 0.1.1
-- form validation included with confirmation at top of webpage
-- redirect to homepage after completion of registration
-- flashes message to the user that form has been validated correctly
+```Shell
+mkdir testing
+touch firstApp.py
+```
 
-## *About Me*
+2. Open your code file and edit the contents.
 
-My name is Mark Ashinhust and I am a Computer Systems Engineer at Arizona State University. I am in my second year and I am trying to expand what I know and be able to implement some of my backend code into this new frontend environment. This is a first from me and after following some guides I hope to be able to complete a project of this sort on my own.
+You can use your own code editor for editing the contents of firstApp.py. I will be using vim as that is my current preferred editor.
+
+```Shell
+#make sure you are in the correct directory
+vim firstApp.py
+```
+
+Once in the file we will code our first application.
+
+```Python
+# firstApp.py
+# 06 Febraury 2023
+
+from flask import Flask		# importing Flask
+
+app = Flask(__name__)		# create an instance of the application
+
+@app.route("/")			# insert a '/' at the end point
+
+def hello():			# call method hello
+	return "Welcome to our First Flask Application!"	# this will print out the words Welcome to our First Flask Application
+
+if __name__ == "__main__":	# on running python app.py, run the flask application
+	app.run()
+
+```
+
+This is then the outline of our first Flask application.
+
+3. Then we can start our application.
+
+To run the application you can use the command.
+
+```Shell
+python firstApp.py
+```
+
+
+## Hello \<Name\>
+
+The next project we are going to do is print hello with your name by changing the URL input.
+
+This is just going to change our firstApp.py code. To begin we want to create a copy of the firstApp.py code. I have named my code helloName.py.
+
+1. Duplicate the firstApp.py code
+
+```Shell
+cp firstApp.py helloName.py
+```
+
+2. Edit the helloName.py code
+
+We want to change the middle definition section for hello to incorporate your name/input.
+
+The new code will look like:
+
+```Python
+@app.route("/<name>")
+def hello_name(name):
+	return "Hello " + name
+```
+
+3. Set Debug to True
+
+The last thing to do is to set debugging to True. This is so our name editing works and shows up in our Flask application. 
+
+To set debugging we now look at the initializer function to run the Python application.
+
+```Python
+if __name__ = "__main__":
+	app.run(debug = True) 	# The debug = True is our new working addition to this code
+```
+
+4. Run the Application and test in your Browser
+
+To run the application do 
+
+```Shell
+python3 helloName.py
+```
+
+Then follow the link that is provided in your browser and append your name to the end. My name is Mark and the link should look like this.
+
+```Shell
+http://127.0.0.1:5000/Mark
+```
+
+The output on screen will be Hello Mark!
+
+You have now finished this tutorial and can use debugging tools with Flask!
+
+# To Do List Application
+
+Now that we have a solid understanding on how to use Flask we can begin creating an application for users. 
+
+This to do list will work just like others and allow people to:
+
+1. Add Items.
+2. Delete Items.
+3. Mark an Item as Completed.
+4. Update Items.
+
+First we will need to focus on data. There will need to be two functions that perform operations on data. The first is to create items in the to do list. When creating items for the to do list we will have:
+
+1. Title
+2. Description
+3. When it was Created
+4. When it is Due
+
+To delete items we must check that the item was deleted. There are two ways to delete items from a list. We can do what is called a soft delete or a hard delete. A soft delete will just flag the item as being deleted but leave it in the list so the user can still  see what they have accomplished.
+
+Items can then be marked as completed and/or updated with new information that follows along with the information that was used to create the item.
+
+### Designing the Database
+
+SQLite relational DB is what is used to store this data in the form of tables. A table needs to be created to store the list created by users. This first table will look like 
+
+```
+ToDo_Items 
+- Id                 Primary Key
+— Title              Text
+- Description        Text  
+- CreatedOn          Date
+- DueDate            Date
+- _is_deleted        Boolean
+- _is_done           Boolean
+```
+
+This would be good if the system was being used for one person. However, this is going to be used by many people and will need to include many users. That means we will need another table to store the users which each have their own ToDo\_Items table.
+
+```
+User
+- Name            Text
+- Email           Email
+- Id              Primary KeyToDo_Items
+   ...
+   ...
+   CreatedBy      ForeginKey(User)
+```
+
+### Code Structure
+
+The code for this application will be broken into three different sections. There will be:
+
+1. app.py - which is the entry and exit point to the application
+2. service.py - which converts the request into a response
+3. models.py - which handles all the database functions
+
+## The Code
+
+
