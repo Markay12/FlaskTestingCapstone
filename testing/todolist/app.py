@@ -5,7 +5,7 @@ from models import Schema
 import json
 
 app = Flask(__name__)
-
+app.config['JSON_AS_ASCII'] = False
 
 @app.after_request
 def add_headers(response):
@@ -16,7 +16,7 @@ def add_headers(response):
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return "Hello Xavier!"
 
 
 @app.route("/<name>")
@@ -49,4 +49,4 @@ def delete_item(item_id):
 
 if __name__ == "__main__":
     Schema()
-    app.run(debug=True, host='127.0.0.1', port=8888)
+    app.run(debug=True, host='0.0.0.0', port=8888)
